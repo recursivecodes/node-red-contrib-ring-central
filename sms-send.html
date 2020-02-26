@@ -1,0 +1,74 @@
+<script type="text/javascript">
+    RED.nodes.registerType('sms-send',{
+        category: 'Ring Central',
+        color: '#FFCC66',
+        defaults: {
+            rccreds: {
+                required: true, 
+                type:"rc-credentials"
+            },
+            recipient: {
+                value: ""
+            },
+            name: {
+                value:""
+            }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-commenting-o",
+        label: function() {
+            return this.name||"Ring Central Send SMS";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="sms-send">
+    <div class="form-row">
+        <label for="node-input-rccreds"><i class="icon-tag"></i> Config</label>
+        <input type="text" id="node-input-rccreds" placeholder="Config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-recipient"><i class="icon-tag"></i> Recipient</label>
+        <input type="text" id="node-input-recipient" placeholder="Recipient">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="sms-send">
+    <p>A node to send an SMS to the given recipient.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">string | any</span>
+        </dt>
+        <dd> the message to be sent as the body of the SMS message (will be cast <code>toString()</code> for complex types).</dd>
+        <dt>config <span class="property-type">rc-credentials</span></dt>
+        <dd> the Ring Central account credentials to use.</dd>
+        <dt>recipient <span class="property-type">string</span></dt>
+        <dd> the phone number to send the SMS message to (add country code and do not use any formatting - ex: +12135551212).</dd>
+        <dt>name <span class="property-type">string</span></dt>
+        <dd> friendly name for this node.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+     <ol class="node-ports">
+         <li>Standard output
+             <dl class="message-properties">
+                 <dt>payload <span class="property-type">string</span></dt>
+                 <dd>the standard output of the command.</dd>
+                 <dt>deliveryStatus <span class="property-type">object</span></dt>
+                 <dd>an object containing the delivery status for this message.</dd>
+             </dl>
+         </li>
+         <li>Standard error
+             <dl class="message-properties">
+                 <dt>payload <span class="property-type">string</span></dt>
+                 <dd>the standard error of the command.</dd>
+             </dl>
+         </li>
+     </ol>
+</script>

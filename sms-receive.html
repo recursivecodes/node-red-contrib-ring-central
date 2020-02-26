@@ -1,0 +1,85 @@
+<script type="text/javascript">
+    RED.nodes.registerType('sms-receive',{
+        category: 'Ring Central',
+        color: '#FFCC66',
+        defaults: {
+            rccreds: {
+                required: true, 
+                type:"rc-credentials"
+            },
+            page: {
+                value: 0
+            },
+            "per-page": {
+                value: 100
+            },
+            name: {
+                value:""
+            }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-comments",
+        label: function() {
+            return this.name||"Ring Central Receive SMS";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="sms-receive">
+    <div class="form-row">
+        <label for="node-input-rccreds"><i class="icon-tag"></i> Config</label>
+        <input type="text" id="node-input-rccreds" placeholder="Config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-page"><i class="icon-tag"></i> Page</label>
+        <input type="number" id="node-input-page" placeholder="Page">
+    </div>
+    <div class="form-row">
+        <label for="node-input-per-page"><i class="icon-tag"></i> Per Page</label>
+        <input type="number" id="node-input-per-page" placeholder="Per Page">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="sms-receive">
+    <p>A node to receive SMS messages from your Ring Central account.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>dateFrom
+            <span class="property-type">string | buffer</span>
+        </dt>
+        <dd> the date/time from which to retrieve messages in ISO 8601 format including timezone. Hint: use the moment module to help add/subtract date/times and format properly.</dd>
+        <dt>config <span class="property-type">rc-credentials</span></dt>
+        <dd> the Ring Central account credentials to use.</dd>
+        <dt>page <span class="property-type">number</span></dt>
+        <dd> the page of results to retrieve (default=0).</dd>
+        <dt>per page <span class="property-type">number</span></dt>
+        <dd> how many results to retrieve in a page of results (default=100).</dd>
+        <dt class="optional">name <span class="property-type">string</span></dt>
+        <dd> friendly name for this node.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+     <ol class="node-ports">
+         <li>Standard output
+             <dl class="message-properties">
+                 <dt>payload <span class="property-type">string</span></dt>
+                 <dd>the standard output of the command.</dd>
+                 <dt>response <span class="property-type">object</span></dt>
+                 <dd>an object containing the SMS messages and meta information (messages are contained in the <code>records</code> key).</dd>
+             </dl>
+         </li>
+         <li>Standard error
+             <dl class="message-properties">
+                 <dt>payload <span class="property-type">string</span></dt>
+                 <dd>the standard error of the command.</dd>
+             </dl>
+         </li>
+     </ol>
+
+</script>

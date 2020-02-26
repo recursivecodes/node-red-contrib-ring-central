@@ -1,0 +1,70 @@
+<script type="text/javascript">
+    RED.nodes.registerType('sign-url',{
+        category: 'Ring Central',
+        color: '#FFCC66',
+        defaults: {
+            rccreds: {
+                required: true, 
+                type:"rc-credentials"
+            },
+            url: {
+                value: ""
+            },
+            name: {
+                value:""
+            }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-pencil",
+        label: function() {
+            return this.name||"Ring Central Sign URL";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="sign-url">
+    <div class="form-row">
+        <label for="node-input-rccreds"><i class="icon-tag"></i> Config</label>
+        <input type="text" id="node-input-rccreds" placeholder="Config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="sign-url">
+    <p>A node to generate a signed URL for a message attachment from your Ring Central account.</p>
+
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>url
+            <span class="property-type">string | buffer</span>
+        </dt>
+        <dd> the raw message attachment url.</dd>
+        <dt>config <span class="property-type">rc-credentials</span></dt>
+        <dd> the Ring Central account credentials to use.</dd>
+        <dt class="optional">name <span class="property-type">string</span></dt>
+        <dd> friendly name for this node.</dd>
+    </dl>
+
+    <h3>Outputs</h3>
+     <ol class="node-ports">
+         <li>Standard output
+             <dl class="message-properties">
+                 <dt>payload <span class="property-type">string</span></dt>
+                 <dd>the standard output of the command.</dd>
+                 <dt>signedUrl <span class="property-type">string</span></dt>
+                 <dd>a signed URL that can be used to retrieve the attachment.</dd>
+             </dl>
+         </li>
+         <li>Standard error
+             <dl class="message-properties">
+                 <dt>payload <span class="property-type">string</span></dt>
+                 <dd>the standard error of the command.</dd>
+             </dl>
+         </li>
+     </ol>
+
+</script>
