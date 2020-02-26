@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-ring-central",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Node-RED module that can be used to interact with Ring Central's APIs.",
   "homepage": "https://github.com/recursivecodes/node-red-contrib-ring-central",
   "main": "sms-send.js",
