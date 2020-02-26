@@ -21,3 +21,7 @@ Is coming soon... stay tuned!
 ## Issues
 
 File an issue on GitHub!
+
+## GitHub
+
+[https://github.com/recursivecodes/node-red-contrib-ring-central](https://github.com/recursivecodes/node-red-contrib-ring-central)
