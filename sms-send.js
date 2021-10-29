@@ -15,7 +15,7 @@ module.exports = function(RED) {
                             'phoneNumber': node.credsNode.username
                         },
                         to: [
-                            {'phoneNumber': n.recipient}
+                            {'phoneNumber': msg.payload.recipient}
                         ],
                         text: msg.payload.toString()
                     })
