@@ -9,14 +9,23 @@ module.exports = function(RED) {
             let status = {};
             const sendSms = () => {
                 node.status({fill:"green",shape:"ring",text:"sending"});
-
+                node.log(Object.keys(msg))
+                let recipients = [];
+                
+                if(typeof msg.recipients !== 'undefined') {
+                    msg.recipients.forEach((r) => {
+                        recipients.push({'phoneNumber': r});
+                    });
+                }
+                else {
+                    let recipient = typeof msg.recipient !== 'undefined' ? msg.recipient : n.recipient;
+                    recipients = [{'phoneNumber': recipient}];
+                }
                 node.credsNode.platform.post('/restapi/v1.0/account/~/extension/~/sms', {
                         from: {
                             'phoneNumber': node.credsNode.username
                         },
-                        to: [
-                            {'phoneNumber': n.recipient}
-                        ],
+                        to: recipients,
                         text: msg.payload.toString()
                     })
                     .then((resp)=> resp.json())

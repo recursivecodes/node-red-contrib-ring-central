@@ -14,9 +14,19 @@ Or, maybe you want your flow to take a certain action when you send a specific m
 
 You'll need a Ring Central account (the free dev account is good enough), so sign up and then [create a new SMS app](https://developers.ringcentral.com/guide/messaging/quick-start/node) to get the username, password, server, extension, client id, client secret that you'll need in your flows.
 
+## Recipients
+
+You can set the recipients phone number directly on the node:
+
+![recipient on node](img/recipient1.png)
+
+You can also override the node's recipient by setting either a single recipient via `msg.recipient` or an array of recipients with `msg.recipients`.
+
+![recipients on node](img/recipients2.png)
+
 ## More
 
-Is coming soon... stay tuned!
+See this [blog post](https://recursive.codes/blog/post/1320).
 
 ## Issues
 
