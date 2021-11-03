@@ -18,11 +18,11 @@ You'll need a Ring Central account (the free dev account is good enough), so sig
 
 You can set the recipients phone number directly on the node:
 
-![recipient on node](img/recipient1.png)
+![recipient on node](https://github.com/recursivecodes/node-red-contrib-ring-central/raw/master/img/recipient1.png)
 
 You can also override the node's recipient by setting either a single recipient via `msg.recipient` or an array of recipients with `msg.recipients`.
 
-![recipients on node](img/recipients2.png)
+![recipients on node](https://github.com/recursivecodes/node-red-contrib-ring-central/raw/master/img/recipients2.png)
 
 ## More
 
